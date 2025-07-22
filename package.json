@@ -1,0 +1,25 @@
+{
+  "name": "alfresco-front-end-generators",
+  "version": "1.0.0",
+  "description": "Alfresco front-end generators",
+  "author": "Alfresco Software, Ltd.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Alfresco/alfresco-front-end-generators.git"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Alfresco/alfresco-front-end-generators/issues"
+  },
+  "homepage": "https://github.com/Alfresco/alfresco-front-end-generators#readme",
+  "devDependencies": {
+    "nx": "21.3.2"
+  },
+  "nx": {
+    "includedScripts": []
+  }
+}
