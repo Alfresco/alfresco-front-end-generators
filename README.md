@@ -1,1 +1,1 @@
-# alfresco-front-end-generators
+# Alfresco FE Generators
