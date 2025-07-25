@@ -1,0 +1,14 @@
+import { importProvidersFrom, ApplicationConfig } from '@angular/core';
+import { provideAnimations } from '@angular/platform-browser/animations';
+import { CoreModule, provideTranslations } from '@alfresco/adf-core';
+import { provideRouter, withHashLocation } from '@angular/router';
+import { APP_ROUTES } from './app.routes';
+
+export const AppConfig: ApplicationConfig = {
+  providers: [
+    importProvidersFrom(CoreModule.forRoot()),
+    provideRouter(APP_ROUTES, withHashLocation()),
+    provideAnimations(),
+    provideTranslations('app', 'resources')
+  ],
+};

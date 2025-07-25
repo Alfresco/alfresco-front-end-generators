@@ -1,0 +1,16 @@
+{
+  "$schema": "../node_modules/@alfresco/adf-core/app.config.schema.json",
+  "ecmHost": "{protocol}//{hostname}{:port}",
+  "providers": "ECM",
+  "authType": "BASIC",
+  "application": {
+    "name": "<%= name %>"
+  },
+  "languages": [
+    {
+      "key": "en",
+      "label": "English"
+    }
+  ],
+  "logLevel": "trace"
+}

@@ -1,0 +1,17 @@
+@import 'material-icons/iconfont/material-icons.css';
+
+/* You can add global styles to this file, and also import other style files */
+@import '@fontsource/open-sans';
+
+body,
+html {
+  height: 100%;
+}
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  margin: 0;
+}
