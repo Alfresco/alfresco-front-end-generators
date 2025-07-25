@@ -25,9 +25,10 @@ npx nx local-registry
 
 a local instance of Verdaccio will be launched at `http://localhost:4873` and the NPM, Yarn and PNPM registries will be configured to point to it.
 
-Next build and publish the plugin:
+Next bump plugin version, build it and publish:
 ```
 npx nx run-many --targets build
+npx nx release version x.y.z
 npx nx release publish --tag latest
 ```
 

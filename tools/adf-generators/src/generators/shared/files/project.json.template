@@ -1,0 +1,133 @@
+{
+  "name": "<%= projectName %>",
+  "$schema": "node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "includedScripts": [],
+  "prefix": "app",
+  "sourceRoot": "src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "options": {
+        "outputPath": "dist/<%= projectName %>",
+        "index": "src/index.html",
+        "main": "src/main.ts",
+        "tsConfig": "src/tsconfig.app.json",
+        "polyfills": "src/polyfills.ts",
+        "preserveSymlinks": true,
+        "allowedCommonJsDependencies": ["minimatch", "cropperjs"],
+        "stylePreprocessorOptions": {
+          "includePaths": ["node_modules", "node_modules/@alfresco/adf-core/lib"]
+        },
+        "assets": [
+          "src/assets",
+          "src/favicon-96x96.png",
+          {
+            "glob": "app.config.json",
+            "input": "src",
+            "output": "/"
+          },
+          {
+            "glob": "**/*",
+            "input": "resources",
+            "output": "/resources"
+          },
+          {
+            "glob": "**/*",
+            "input": "node_modules/@alfresco/adf-core/bundles/assets",
+            "output": "/assets"
+          },
+          {
+            "glob": "**/*",
+            "input": "node_modules/@alfresco/adf-content-services/bundles/assets",
+            "output": "/assets"
+          },
+          {
+            "glob": "pdf.worker.min.mjs",
+            "input": "node_modules/pdfjs-dist/build",
+            "output": "/"
+          }
+        ],
+        "styles": [
+          "node_modules/cropperjs/dist/cropper.min.css",
+          "node_modules/pdfjs-dist/web/pdf_viewer.css",
+          "src/styles.scss"
+        ],
+        "vendorChunk": true,
+        "extractLicenses": false,
+        "buildOptimizer": false,
+        "sourceMap": true,
+        "optimization": false,
+        "namedChunks": true
+      },
+      "configurations": {
+        "production": {
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false,
+          "buildOptimizer": true,
+          "fileReplacements": [
+            {
+              "replace": "src/environments/environment.ts",
+              "with": "src/environments/environment.prod.ts"
+            }
+          ],
+          "budgets": [
+            {
+              "type": "bundle",
+              "name": "main",
+              "maximumWarning": "2mb",
+              "maximumError": "5mb"
+            },
+            {
+              "type": "bundle",
+              "name": "vendor",
+              "maximumWarning": "10mb",
+              "maximumError": "15mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "6kb"
+            }
+          ]
+        }
+      },
+      "defaultConfiguration": "",
+      "outputs": ["{options.outputPath}"]
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "options": {
+        "buildTarget": "<%= projectName %>:build",
+        "port": 4200,
+        "disableHostCheck": true,
+        "open": true,
+        "proxyConfig": "proxy.conf.js"
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "<%= projectName %>:build:production"
+        },
+        "development": {
+          "buildTarget": "<%= projectName %>:build"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "test": {
+      "executor": "@angular-devkit/build-angular:karma",
+      "options": {
+        "main": "src/test.ts",
+        "tsConfig": "tsconfig.spec.json",
+        "karmaConfig": "karma.conf.js"
+      }
+    },
+    "lint": {
+      "executor": "@angular-eslint/builder:lint"
+    }
+  }
+}

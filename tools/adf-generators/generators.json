@@ -1,0 +1,9 @@
+{
+  "generators": {
+    "empty-app": {
+      "factory": "src/generators/empty-app/empty-app",
+      "schema": "src/generators/empty-app/schema.json",
+      "description": "Empty ADF application generator"
+    }
+  }
+}
