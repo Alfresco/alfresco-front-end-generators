@@ -1,0 +1,45 @@
+<adf-sidenav-layout
+  [sidenavMin]="60"
+  [sidenavMax]="200"
+  [stepOver]="780"
+  [hideSidenav]="false"
+  [expandedSidenav]="true"
+>
+  <adf-sidenav-layout-header>
+    <ng-template let-toggleMenu="toggleMenu">
+      <adf-layout-header id="adf-header" [title]="'ADF'" color="primary" (clicked)="toggleMenu()">
+      </adf-layout-header>
+    </ng-template>
+  </adf-sidenav-layout-header>
+
+  <adf-sidenav-layout-navigation>
+    <ng-template let-isMenuMinimized="isMenuMinimized">
+      <mat-nav-list class="adf-sidenav-linklist">
+        <a mat-list-item class="adf-sidenav-link" routerLink="/login">
+          <mat-icon matListIcon class="sidenav-menu-icon">vpn_key</mat-icon>
+          @if (!isMenuMinimized()) {
+          <div class="sidenav-menu-label">Login</div>
+          }
+        </a>
+        <a mat-list-item class="adf-sidenav-link" routerLink="/documents">
+          <mat-icon matListIcon class="sidenav-menu-icon">folder_open</mat-icon>
+          @if (!isMenuMinimized()) {
+          <div class="sidenav-menu-label">Documents</div>
+          }
+        </a>
+        <a mat-list-item adf-logout class="adf-sidenav-link">
+          <mat-icon matListIcon class="sidenav-menu-icon">exit_to_app</mat-icon>
+          @if (!isMenuMinimized()) {
+          <div class="sidenav-menu-label">Logout</div>
+          }
+        </a>
+      </mat-nav-list>
+    </ng-template>
+  </adf-sidenav-layout-navigation>
+
+  <adf-sidenav-layout-content>
+    <ng-template>
+      <router-outlet></router-outlet>
+    </ng-template>
+  </adf-sidenav-layout-content>
+</adf-sidenav-layout>

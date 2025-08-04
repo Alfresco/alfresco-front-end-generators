@@ -4,6 +4,11 @@
       "factory": "src/generators/empty-app/empty-app",
       "schema": "src/generators/empty-app/schema.json",
       "description": "Empty ADF application generator"
+    },
+    "template-app": {
+      "factory": "./src/generators/template-app/template-app",
+      "schema": "./src/generators/template-app/schema.json",
+      "description": "ADF application generator with selected template"
     }
   }
 }

@@ -1,0 +1,3 @@
+.app-documents adf-upload-button {
+  width: 160px;
+}

@@ -1,0 +1,12 @@
+import { Component, ViewEncapsulation } from '@angular/core';
+import { LoginComponent } from '@alfresco/adf-core';
+
+@Component({
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss'],
+  encapsulation: ViewEncapsulation.None,
+  standalone: true,
+  imports: [LoginComponent]
+})
+export class AppLoginComponent {}

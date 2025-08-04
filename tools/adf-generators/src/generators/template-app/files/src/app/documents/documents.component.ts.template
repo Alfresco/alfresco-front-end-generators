@@ -1,0 +1,63 @@
+import { Component, ViewChild, Input, ViewEncapsulation } from '@angular/core';
+import {
+  NotificationService,
+  PaginationComponent,
+  TOOLBAR_DIRECTIVES,
+} from '@alfresco/adf-core';
+import {
+  BreadcrumbComponent,
+  CheckAllowableOperationDirective,
+  DocumentListComponent,
+  FileUploadingDialogComponent,
+  UploadButtonComponent,
+} from '@alfresco/adf-content-services';
+import { PreviewService } from '../services/preview.service';
+import { Pagination } from '@alfresco/js-api';
+
+@Component({
+  selector: 'app-documents',
+  templateUrl: './documents.component.html',
+  styleUrls: ['./documents.component.scss'],
+  encapsulation: ViewEncapsulation.None,
+  standalone: true,
+  imports: [
+    BreadcrumbComponent,
+    CheckAllowableOperationDirective,
+    DocumentListComponent,
+    UploadButtonComponent,
+    FileUploadingDialogComponent,
+    PaginationComponent,
+    TOOLBAR_DIRECTIVES,
+  ],
+  host: { class: 'app-documents' },
+})
+export class DocumentsComponent {
+  @Input()
+  showViewer = false;
+  nodeId: string = null;
+  pagination: Pagination = new Pagination({
+    skipCount: 0,
+    maxItems: 25,
+    totalItems: 0,
+  });
+
+  @ViewChild('documentList')
+  documentList: DocumentListComponent;
+
+  constructor(
+    private notificationService: NotificationService,
+    private preview: PreviewService
+  ) {}
+
+  uploadSuccess() {
+    this.notificationService.openSnackMessage('File uploaded');
+    this.documentList.reload();
+  }
+
+  showPreview(event) {
+    const entry = event.value.entry;
+    if (entry && entry.isFile) {
+      this.preview.showResource(entry.id);
+    }
+  }
+}

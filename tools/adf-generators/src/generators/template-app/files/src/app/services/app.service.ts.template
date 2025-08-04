@@ -1,0 +1,103 @@
+import { inject, Injectable } from '@angular/core';
+import {
+  AuthenticationService,
+  PageTitleService,
+  UserPreferencesService,
+  StorageService,
+} from '@alfresco/adf-core';
+import { Observable, BehaviorSubject, Subject } from 'rxjs';
+import { AlfrescoApiService } from '@alfresco/adf-content-services';
+import { ActivatedRoute, ActivationEnd, Router } from '@angular/router';
+import { filter, map } from 'rxjs/operators';
+import { ShellAppService } from '@alfresco/adf-core/shell';
+import { MatDialog } from '@angular/material/dialog';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class AppService implements ShellAppService {
+  private matDialog = inject(MatDialog);
+  private ready: BehaviorSubject<boolean>;
+  private pageHeading = new BehaviorSubject('');
+
+  ready$: Observable<boolean>;
+  pageHeading$ = this.pageHeading.asObservable();
+  appNavNarMode$: Subject<'collapsed' | 'expanded'> = new BehaviorSubject(
+    'expanded',
+  );
+  toggleAppNavBar$ = new Subject<void>();
+  hideSidenavConditions = [''];
+  minimizeSidenavConditions = [''];
+
+  constructor(
+    public preferencesService: UserPreferencesService,
+    private authenticationService: AuthenticationService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+    private pageTitle: PageTitleService,
+    private alfrescoApiService: AlfrescoApiService,
+    private readonly storage: StorageService,
+  ) {
+    this.ready = new BehaviorSubject(this.authenticationService.isLoggedIn());
+    this.ready$ = this.ready.asObservable();
+
+    this.authenticationService.onLogin.subscribe(() => {
+      this.ready.next(true);
+      this.preferencesService.setStoragePrefix(
+        this.authenticationService.getUsername(),
+      );
+    });
+
+    this.authenticationService.onLogout.subscribe(() => {
+      this.storage.removeItem(
+        this.preferencesService.getPropertyKey('expandedSidenav'),
+      );
+    });
+
+    this.router.events
+      .pipe(
+        filter(
+          (event) =>
+            event instanceof ActivationEnd &&
+            event.snapshot.children.length === 0,
+        ),
+        map((event: ActivationEnd) => event.snapshot?.data?.title ?? ''),
+      )
+      .subscribe((title) => {
+        this.pageHeading.next(title);
+        this.pageTitle.setTitle(title);
+      });
+  }
+
+  init(): void {
+    this.alfrescoApiService
+      .getInstance()
+      .on('error', (error: { status: number; response: any }) => {
+        if (
+          error.status === 401 &&
+          !this.alfrescoApiService.isExcludedErrorListener(
+            error?.response?.req?.url,
+          )
+        ) {
+          if (!this.authenticationService.isLoggedIn()) {
+            this.matDialog.closeAll();
+
+            let redirectUrl =
+              this.activatedRoute.snapshot.queryParams['redirectUrl'];
+            if (!redirectUrl) {
+              redirectUrl = this.router.url;
+            }
+
+            this.router.navigate(['/login'], {
+              queryParams: { redirectUrl },
+            });
+          }
+        }
+      });
+  }
+
+  setAppNavbarMode(mode: 'expanded' | 'collapsed'): void {
+    this.appNavNarMode$.next(mode);
+    this.preferencesService.set('expandedSidenav', mode === 'expanded');
+  }
+}

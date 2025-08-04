@@ -1,0 +1,23 @@
+app-login {
+  .adf-login-action-container {
+    width: 100%;
+  }
+
+  .adf-login-content .adf-login-form-field {
+
+    .mat-mdc-icon-button {
+      width: 24px;
+      height: 24px;
+      padding: 0px;
+      top: 8px;
+    }
+
+    .adf-login-password-icon.adf-login-form-password-icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      top: unset;
+      left: unset;
+    }
+  }
+}
