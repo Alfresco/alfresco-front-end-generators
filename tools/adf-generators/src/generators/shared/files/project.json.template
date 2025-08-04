@@ -30,8 +30,8 @@
           },
           {
             "glob": "**/*",
-            "input": "resources",
-            "output": "/resources"
+            "input": "assets",
+            "output": "/assets"
           },
           {
             "glob": "**/*",
@@ -43,6 +43,13 @@
             "input": "node_modules/@alfresco/adf-content-services/bundles/assets",
             "output": "/assets"
           },
+          <% if(template == 'aps' || template == 'acs-aps') { %>
+          {
+            "glob": "**/*",
+            "input": "node_modules/@alfresco/adf-process-services/bundles/assets",
+            "output": "/assets"
+          },
+          <% } %>
           {
             "glob": "pdf.worker.min.mjs",
             "input": "node_modules/pdfjs-dist/build",
@@ -50,6 +57,8 @@
           }
         ],
         "styles": [
+          "assets/fonts/material-icons/material-icons.css",
+          "assets/fonts/muli/muli.css",
           "node_modules/cropperjs/dist/cropper.min.css",
           "node_modules/pdfjs-dist/web/pdf_viewer.css",
           "src/styles.scss"

@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/schema",
+  "$id": "TemplateApp",
+  "title": "",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "x-prompt": "What name would you like to use?"
+    },
+    "template": {
+      "type": "string",
+      "description": "Provide the template for the application.",
+      "x-prompt": {
+        "message": "Which template would you like to use?",
+        "type": "list",
+        "items": [
+          {
+            "value": "empty",
+            "label": "Empty (no components used by default)"
+          },
+          {
+            "value": "acs",
+            "label": "Basic ACS functionalities integrated"
+          },
+          {
+            "value": "aps",
+            "label": "Basic APS functionalities integrated"
+          },
+          {
+            "value": "acs-aps",
+            "label": "ACS and APS functionalities integrated"
+          }
+        ]
+      }
+    },
+    "authType": {
+      "type": "string",
+      "description": "Provide the authentication type for the application.",
+      "x-prompt": {
+        "message": "Which authentication type would you like to use?",
+        "type": "list",
+        "items": [
+          {
+            "value": "BASIC",
+            "label": "Basic auth"
+          },
+          {
+            "value": "OAUTH",
+            "label": "OAuth"
+          }
+        ]
+      }
+    },
+    "provider": {
+      "type": "string",
+      "description": "Provide the providers for the application.",
+      "x-prompt": {
+        "message": "Which providers would you like to use?",
+        "type": "list",
+        "items": [
+          {
+            "value": "ECM",
+            "label": "ECM"
+          },
+          {
+            "value": "BPM",
+            "label": "BPM"
+          },
+          {
+            "value": "ALL",
+            "label": "ALL"
+          }
+        ]
+      }
+    }
+  },
+  "required": ["name"]
+}

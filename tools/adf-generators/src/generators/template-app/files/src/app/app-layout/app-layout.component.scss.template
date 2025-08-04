@@ -1,0 +1,31 @@
+.app-layout {
+  adf-sidenav-layout {
+    height: 100%;
+  }
+
+  .adf-sidenav-linklist {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    .adf-sidenav-link {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      height: 40px;
+      width: 100%;
+      padding-left: 20px;
+      text-decoration: none;
+      color: black;
+      cursor: pointer;
+
+      &:hover {
+        background-color: var(--adf-theme-primary-100);
+      }
+
+      .sidenav-menu-label {
+        margin-left: 10px;
+      }
+    }
+  }
+}

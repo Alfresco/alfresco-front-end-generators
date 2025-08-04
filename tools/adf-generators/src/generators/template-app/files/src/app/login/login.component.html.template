@@ -1,0 +1,3 @@
+<adf-login
+  [copyrightText]="'Your copyright text.'"
+  successRoute="/documents"/>

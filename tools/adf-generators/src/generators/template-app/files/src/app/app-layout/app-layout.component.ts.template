@@ -1,0 +1,28 @@
+import { LAYOUT_DIRECTIVES, LogoutDirective, SidenavLayoutComponent } from '@alfresco/adf-core';
+import { CommonModule } from '@angular/common';
+import { Component, ViewChild, ViewEncapsulation } from '@angular/core';
+import { MatIcon } from '@angular/material/icon';
+import { MatNavList } from '@angular/material/list';
+import { RouterModule } from '@angular/router';
+import { AppService } from '../services/app.service';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app-layout.component.html',
+  styleUrls: ['./app-layout.component.scss'],
+  encapsulation: ViewEncapsulation.None,
+  standalone: true,
+  imports: [CommonModule, LAYOUT_DIRECTIVES, MatIcon, MatNavList, RouterModule, LogoutDirective],
+  host: { class: 'app-layout' }
+})
+export class AppLayoutComponent {
+  @ViewChild(SidenavLayoutComponent, { static: true })
+  sidenav: SidenavLayoutComponent;
+
+  constructor(private appService: AppService) {}
+
+  toggleMenu() {
+    this.sidenav.toggleMenu();
+    this.appService.setAppNavbarMode(this.sidenav.isMenuMinimized ? 'collapsed' : 'expanded');
+  }
+}
