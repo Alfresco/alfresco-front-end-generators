@@ -5,12 +5,12 @@ import {
   Tree,
 } from '@nx/devkit';
 import * as path from 'path';
-import { EmptyAppGeneratorSchema } from './schema';
+import { TemplateAppGeneratorSchema } from './schema';
 import { addCommonFiles } from '../shared/addCommonFiles';
 
-export async function emptyAppGenerator(
+export async function templateAppGenerator(
   tree: Tree,
-  options: EmptyAppGeneratorSchema
+  options: TemplateAppGeneratorSchema
 ) {
   const projectRoot = `${options.name}`;
   addProjectConfiguration(tree, options.name, {
@@ -19,9 +19,10 @@ export async function emptyAppGenerator(
     sourceRoot: `${projectRoot}/src`,
     targets: {},
   });
-  addCommonFiles(tree, { projectName: options.name, projectRoot, template: 'empty', authType: 'BASIC', provider: 'ECM' });
+
+  addCommonFiles(tree, { projectName: options.name, projectRoot, template: options.template, authType: options.authType, provider: options.provider });
   generateFiles(tree, path.join(__dirname, 'files'), projectRoot, options);
   await formatFiles(tree);
 }
 
-export default emptyAppGenerator;
+export default templateAppGenerator;

@@ -17,5 +17,12 @@ module.exports = {
               proxyRes.headers['www-authenticate'] = 'x' + header;
           }
       }
+    },
+    <% if(template == 'aps' || template == 'acs-aps') { %>
+    "/activiti-app": {
+      "target": "http://localhost:9999",
+      "secure": false,
+      "changeOrigin": true
     }
+    <% } %>
 };

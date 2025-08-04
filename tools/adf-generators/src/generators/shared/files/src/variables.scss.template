@@ -1,0 +1,23 @@
+/* stylelint-disable scss/no-global-function-names */
+@use '@angular/material' as mat;
+@use 'sass:color';
+
+$foreground: map-get($theme, foreground);
+$background: map-get($theme, background);
+$background-color: mat.m2-get-color-from-palette($background, background);
+$text-color: mat.m2-get-color-from-palette($foreground, text);
+$secondary-text: mat.m2-get-color-from-palette($foreground, secondary-text);
+
+// CSS Variables
+$defaults: (
+  --theme-background-color: $background-color,
+  --theme-text-color: mat.m2-get-color-from-palette($foreground, text, 0.54),
+  --theme-secondary-text-color: mat.m2-get-color-from-palette($foreground, secondary-text, 0.54)
+);
+
+// propagates SCSS variables into the CSS variables scope
+:root {
+  @each $name, $value in $defaults {
+    #{$name}: #{$value};
+  }
+}

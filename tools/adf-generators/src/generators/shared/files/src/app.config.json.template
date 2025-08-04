@@ -1,0 +1,35 @@
+{
+  "$schema": "../node_modules/@alfresco/adf-core/app.config.schema.json",
+  <% if(provider == 'ECM' || provider == 'ALL') { %>
+  "ecmHost": "{protocol}//{hostname}{:port}",
+  <% } %>
+  <% if(provider == 'BPM' || provider == 'ALL') { %>
+  "bpmHost": "{protocol}//{hostname}{:port}",
+  <% } %>
+  "providers": "<%= provider %>",
+  "authType": "<%= authType %>",
+  <% if(authType == 'OAUTH') { %>
+  "identityHost": "{protocol}//{hostname}{:port}/auth/realms/alfresco",
+  "oauth2": {
+    "host": "{protocol}//{hostname}{:port}/auth/realms/alfresco",
+    "clientId": "alfresco",
+    "scope": "openid",
+    "secret": "",
+    "implicitFlow": true,
+    "silentLogin": true,
+    "redirectSilentIframeUri": "{protocol}//{hostname}{:port}/assets/silent-refresh.html",
+    "redirectUri": "/",
+    "redirectUriLogout": "/logout"
+  },
+  <% } %>
+  "application": {
+    "name": "<%= projectName %>"
+  },
+  "languages": [
+    {
+      "key": "en",
+      "label": "English"
+    }
+  ],
+  "logLevel": "trace"
+}

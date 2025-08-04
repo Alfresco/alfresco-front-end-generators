@@ -14,6 +14,9 @@
     "@alfresco/adf-content-services": "8.0.0",
     "@alfresco/adf-core": "8.0.0",
     "@alfresco/adf-extensions": "8.0.0",
+    <% if(template == 'aps' || template == 'acs-aps') { %>
+    "@alfresco/adf-process-services": "8.0.0",
+    <% } %>
     "@alfresco/eslint-plugin-eslint-angular": "8.0.0",
     "@alfresco/js-api": "9.0.0",
     "@angular/animations": "19.2.6",
