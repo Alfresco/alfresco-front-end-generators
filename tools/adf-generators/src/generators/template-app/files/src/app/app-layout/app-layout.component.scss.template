@@ -18,6 +18,7 @@
       text-decoration: none;
       color: black;
       cursor: pointer;
+      box-sizing: border-box;
 
       &:hover {
         background-color: var(--adf-theme-primary-100);

@@ -21,12 +21,22 @@
           <div class="sidenav-menu-label">Login</div>
           }
         </a>
+        <% if(template == 'acs' || template == 'acs-aps') { %>
         <a mat-list-item class="adf-sidenav-link" routerLink="/documents">
           <mat-icon matListIcon class="sidenav-menu-icon">folder_open</mat-icon>
           @if (!isMenuMinimized()) {
           <div class="sidenav-menu-label">Documents</div>
           }
         </a>
+        <% } %>
+        <% if(template == 'aps' || template == 'acs-aps') { %>
+        <a mat-list-item class="adf-sidenav-link" routerLink="/apps">
+          <mat-icon matListIcon class="sidenav-menu-icon">device_hub</mat-icon>
+          @if (!isMenuMinimized()) {
+          <div class="sidenav-menu-label" *ngIf="!isMenuMinimized()">Apps</div>
+          }
+        </a>
+        <% } %>
         <a mat-list-item adf-logout class="adf-sidenav-link">
           <mat-icon matListIcon class="sidenav-menu-icon">exit_to_app</mat-icon>
           @if (!isMenuMinimized()) {

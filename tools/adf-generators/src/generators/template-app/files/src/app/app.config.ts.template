@@ -12,11 +12,18 @@ import { APP_ROUTES } from './app.routes';
 import { AppService } from './services/app.service';
 import { PreviewService } from './services/preview.service';
 import { ContentModule } from '@alfresco/adf-content-services';
+<% if(template == 'aps' || template == 'acs-aps') { %>
+import { ProcessModule } from '@alfresco/adf-process-services';
+<% } %>
 
 export const AppConfig: ApplicationConfig = {
   providers: [
+    importProvidersFrom(AuthModule.forRoot({ useHash: true })),
     importProvidersFrom(CoreModule.forRoot()),
     importProvidersFrom(ContentModule.forRoot()),
+    <% if(template == 'aps' || template == 'acs-aps') { %>
+    importProvidersFrom(ProcessModule.forRoot()),
+    <% } %>
     provideRouter(APP_ROUTES, withHashLocation()),
     provideAnimations(),
     {
@@ -28,7 +35,6 @@ export const AppConfig: ApplicationConfig = {
       useValue: AuthGuard,
     },
     provideTranslations('app', 'assets'),
-    importProvidersFrom(AuthModule.forRoot({ useHash: true })),
     PreviewService
   ],
 };

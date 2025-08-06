@@ -1,0 +1,37 @@
+import { StartProcessInstanceComponent } from '@alfresco/adf-process-services';
+import { CommonModule } from '@angular/common';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+
+@Component({
+  selector: 'app-start-process',
+  templateUrl: './start-process.component.html',
+  encapsulation: ViewEncapsulation.None,
+  standalone: true,
+  imports: [CommonModule, RouterModule, StartProcessInstanceComponent]
+})
+export class StartProcessComponent implements OnInit {
+
+  appId: number = null;
+
+  constructor(private router: Router,
+              private route: ActivatedRoute) { }
+
+  ngOnInit() {
+    this.route.params.subscribe(params => {
+      if (params.appId && params.appId !== '0') {
+          this.appId = +params.appId;
+      } else {
+        this.router.navigate(['/apps']);
+      }
+    });
+  }
+
+  onProcessStarted() {
+    this.router.navigate(['/apps', this.appId || 0, 'tasks']);
+  }
+
+  onCancelStartProcess() {
+    this.router.navigate(['/apps', this.appId || 0, 'tasks']);
+  }
+}

@@ -1,0 +1,26 @@
+import { Component, ViewEncapsulation } from '@angular/core';
+import { PreviewService } from '../services/preview.service';
+import { Router } from '@angular/router';
+import { ViewerComponent } from '@alfresco/adf-core';
+
+@Component({
+  selector: 'app-blob-view',
+  templateUrl: 'blob-view.component.html',
+  encapsulation: ViewEncapsulation.None,
+  standalone: true,
+  imports: [ViewerComponent],
+})
+export class BlobViewComponent {
+    content: Blob;
+    name: string;
+
+    constructor(preview: PreviewService, router: Router) {
+        if (preview.content === null || preview.name === null) {
+            router.navigate([{ outlets: { overlay: null } }]);
+            return;
+        }
+
+        this.content = preview.content;
+        this.name = preview.name;
+    }
+}
