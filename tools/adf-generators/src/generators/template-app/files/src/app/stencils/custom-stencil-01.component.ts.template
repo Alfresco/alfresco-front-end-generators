@@ -1,0 +1,16 @@
+import { WidgetComponent } from "@alfresco/adf-core";
+import { CommonModule } from "@angular/common";
+import { Component, ViewEncapsulation } from "@angular/core";
+
+@Component({
+  selector: "custom-stencil-01",
+  template: `<div style="color: green">
+    ADF version of custom Activiti stencil
+  </div>`,
+  encapsulation: ViewEncapsulation.None,
+  standalone: true,
+  imports: [CommonModule],
+  host: { class: 'app-layout' }
+})
+export class CustomStencil01 extends WidgetComponent {
+}

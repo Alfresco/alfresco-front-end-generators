@@ -10,16 +10,23 @@
   "authType": "<%= authType %>",
   <% if(authType == 'OAUTH') { %>
   "identityHost": "{protocol}//{hostname}{:port}/auth/realms/alfresco",
+  "loginRoute": "login",
   "oauth2": {
     "host": "{protocol}//{hostname}{:port}/auth/realms/alfresco",
     "clientId": "alfresco",
-    "scope": "openid",
+    "scope": "openid email profile",
     "secret": "",
-    "implicitFlow": true,
+    "implicitFlow": false,
+    "codeFlow": true,
     "silentLogin": true,
     "redirectSilentIframeUri": "{protocol}//{hostname}{:port}/assets/silent-refresh.html",
     "redirectUri": "/",
-    "redirectUriLogout": "/logout"
+    "redirectUriLogout": "/",
+    "logoutUrl": "",
+    "logoutParameters": [],
+    "audience": "",
+    "skipIssuerCheck": true,
+    "strictDiscoveryDocumentValidation": false
   },
   <% } %>
   "application": {

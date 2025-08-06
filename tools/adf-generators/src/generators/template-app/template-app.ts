@@ -22,6 +22,19 @@ export async function templateAppGenerator(
 
   addCommonFiles(tree, { projectName: options.name, projectRoot, template: options.template, authType: options.authType, provider: options.provider });
   generateFiles(tree, path.join(__dirname, 'files'), projectRoot, options);
+
+  if (options.template === 'acs') {
+    tree.delete(path.join(__dirname, 'files/src/app/apps'));
+    tree.delete(path.join(__dirname, 'files/src/app/start-process'));
+    tree.delete(path.join(__dirname, 'files/src/app/stencils'));
+    tree.delete(path.join(__dirname, 'files/src/app/task-details'));
+    tree.delete(path.join(__dirname, 'files/src/app/tasks'));
+  }
+
+  if (options.template === 'aps') {
+    tree.delete(path.join(__dirname, 'files/src/app/documents'));
+  }
+
   await formatFiles(tree);
 }
 

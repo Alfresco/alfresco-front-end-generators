@@ -1,0 +1,5 @@
+<adf-viewer
+    [showViewer]="true"
+    [blobFile]="content"
+    [fileName]="name">
+</adf-viewer>

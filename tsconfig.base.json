@@ -15,8 +15,12 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@alfresco-front-end-generators/adf-generators": ["tools/adf-generators/src/index.ts"],
-      "@alfresco-front-end-generators/adw-generators": ["tools/adw-generators/src/index.ts"],
+      "@alfresco-front-end-generators/adf-generators": [
+        "tools/adf-generators/src/index.ts"
+      ],
+      "@alfresco-front-end-generators/adw-generators": [
+        "tools/adw-generators/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]

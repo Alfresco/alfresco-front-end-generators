@@ -1,0 +1,14 @@
+import { Component, ViewEncapsulation } from "@angular/core";
+import { WidgetComponent } from "@alfresco/adf-core";
+import { CommonModule } from "@angular/common";
+
+@Component({
+  selector: "custom-editor",
+  template: ` <div style="color: red">Look, I'm a custom editor!</div> `,
+  encapsulation: ViewEncapsulation.None,
+  standalone: true,
+  imports: [CommonModule],
+  host: { class: 'app-layout' }
+})
+export class CustomEditorComponent extends WidgetComponent {
+}
