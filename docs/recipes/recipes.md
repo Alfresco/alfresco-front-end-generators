@@ -17,4 +17,15 @@ Want to fully explore your application potential and use ADF's full potential? C
   * How to make sure that date formats will follow language changes?
 
 * [Theming](./theming.md)
-* [Routing](./routing.md)
+  * Theming concept
+  * How to modify OOTB theme?
+  * How to add multiple themes?
+  * How to create and use reusable variables accessible across the app?
+
+* [How to customize login page in my app?](https://github.com/Alfresco/alfresco-ng2-components/blob/master/docs/core/components/login.component.md)
+
+* [How to add new custom page?](./how-to-add-custom-page.md)
+  * Component creation
+  * Adding new routes and navigation items
+  * Layout definition
+  * Integrating existing components into new layout

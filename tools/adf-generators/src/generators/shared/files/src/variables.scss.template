@@ -12,7 +12,9 @@ $secondary-text: mat.m2-get-color-from-palette($foreground, secondary-text);
 $defaults: (
   --theme-background-color: $background-color,
   --theme-text-color: mat.m2-get-color-from-palette($foreground, text, 0.54),
-  --theme-secondary-text-color: mat.m2-get-color-from-palette($foreground, secondary-text, 0.54)
+  --theme-secondary-text-color: mat.m2-get-color-from-palette($foreground, secondary-text, 0.54),
+  --theme-hover-color: mat.m2-get-color-from-palette($app-primary-blue, 200),
+  --theme-active-bg-color: mat.m2-get-color-from-palette($app-primary-blue, 100)
 );
 
 // propagates SCSS variables into the CSS variables scope

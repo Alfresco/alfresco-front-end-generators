@@ -21,7 +21,15 @@
       box-sizing: border-box;
 
       &:hover {
-        background-color: var(--adf-theme-primary-100);
+        background-color: var(--theme-hover-color);
+      }
+
+      &.active {
+        background-color: var(--theme-active-bg-color);
+
+        &:hover {
+          background-color: var(--theme-hover-color);
+        }
       }
 
       .sidenav-menu-label {
