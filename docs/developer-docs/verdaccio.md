@@ -25,7 +25,18 @@ npx nx local-registry
 
 a local instance of Verdaccio will be launched at `http://localhost:4873` and the NPM, Yarn and PNPM registries will be configured to point to it.
 
-Next bump plugin version, build it and publish:
+***Be aware that every time you stop and restart the local vardaccio instance, you are starting with an empty npm registry! Meaning no previous releases will be persisted.***
+
+Now to test local changes done to any plugin you can build it, bump it's version if the same is already published and publish it to your local Verdaccio instance, for example for `adf-generators` you can do the following:
+
+```
+npx nx build adf-generators
+npx nx release version x.y.z
+npx nx release publish adf-generators
+```
+
+or you can build and release all plugins at once: 
+
 ```
 npx nx run-many --targets build
 npx nx release version x.y.z
