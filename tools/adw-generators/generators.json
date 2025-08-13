@@ -1,0 +1,9 @@
+{
+  "generators": {
+    "adw-extension": {
+      "factory": "./src/generators/adw-extension",
+      "schema": "./src/generators/schema.json",
+      "description": "ADW extension generator"
+    }
+  }
+}

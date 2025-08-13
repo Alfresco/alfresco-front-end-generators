@@ -1,0 +1,41 @@
+{
+  "name": "aca-generators",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "tools/aca-generators/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/tools/aca-generators",
+        "main": "tools/aca-generators/src/index.ts",
+        "tsConfig": "tools/aca-generators/tsconfig.lib.json",
+        "assets": [
+          "tools/aca-generators/*.md",
+          {
+            "input": "./tools/aca-generators/src",
+            "glob": "**/!(*.ts)",
+            "output": "./src"
+          },
+          {
+            "input": "./tools/aca-generators/src",
+            "glob": "**/*.d.ts",
+            "output": "./src"
+          },
+          {
+            "input": "./tools/aca-generators",
+            "glob": "generators.json",
+            "output": "."
+          },
+          {
+            "input": "./tools/aca-generators",
+            "glob": "executors.json",
+            "output": "."
+          }
+        ]
+      }
+    }
+  }
+}

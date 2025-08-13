@@ -1,0 +1,9 @@
+{
+  "generators": {
+    "aca-extension": {
+      "factory": "./src/generators/aca-extension",
+      "schema": "./src/generators/schema.json",
+      "description": "ACA extension generator"
+    }
+  }
+}
