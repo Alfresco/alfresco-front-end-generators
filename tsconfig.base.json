@@ -20,7 +20,8 @@
       ],
       "@alfresco-front-end-generators/adw-generators": [
         "tools/adw-generators/src/index.ts"
-      ]
+      ],
+      "aca-generators": ["tools/aca-generators/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
