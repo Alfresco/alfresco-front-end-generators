@@ -26,3 +26,5 @@ log:
 
 publish:
   allow_offline: true # set offline to true to allow publish offline
+
+max_body_size: 100mb

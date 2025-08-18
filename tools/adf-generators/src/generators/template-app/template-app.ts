@@ -24,15 +24,27 @@ export async function templateAppGenerator(
   generateFiles(tree, path.join(__dirname, 'files'), projectRoot, options);
 
   if (options.template === 'acs') {
-    tree.delete(path.join(__dirname, 'files/src/app/apps'));
-    tree.delete(path.join(__dirname, 'files/src/app/start-process'));
-    tree.delete(path.join(__dirname, 'files/src/app/stencils'));
-    tree.delete(path.join(__dirname, 'files/src/app/task-details'));
-    tree.delete(path.join(__dirname, 'files/src/app/tasks'));
+    if (tree.exists(`${projectRoot}/src/app/apps`)) {
+      tree.delete(`${projectRoot}/src/app/apps`);
+    }
+    if (tree.exists(`${projectRoot}/src/app/start-process`)) {
+      tree.delete(`${projectRoot}/src/app/start-process`);
+    }
+    if (tree.exists(`${projectRoot}/src/app/stencils`)) {
+      tree.delete(`${projectRoot}/src/app/stencils`);
+    }
+    if (tree.exists(`${projectRoot}/src/app/task-details`)) {
+      tree.delete(`${projectRoot}/src/app/task-details`);
+    }
+    if (tree.exists(`${projectRoot}/src/app/tasks`)) {
+      tree.delete(`${projectRoot}/src/app/tasks`);
+    }
   }
 
   if (options.template === 'aps') {
-    tree.delete(path.join(__dirname, 'files/src/app/documents'));
+    if (tree.exists(`${projectRoot}/src/app/documents`)) {
+      tree.delete(`${projectRoot}/src/app/documents`);
+    }
   }
 
   await formatFiles(tree);
