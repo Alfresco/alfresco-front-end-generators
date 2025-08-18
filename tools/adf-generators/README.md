@@ -1,11 +1,3 @@
-# adf-generators
+# ADF generators
 
-This library was generated with [Nx](https://nx.dev).
-
-## Building
-
-Run `nx build adf-generators` to build the library.
-
-## Running unit tests
-
-Run `nx test adf-generators` to execute the unit tests via [Jest](https://jestjs.io).
+This plugin represents a set of ADF related generators for ADF based application generation. To build and work with it check out [how to work with plugins locally](../../docs/developer-docs/verdaccio.md).
