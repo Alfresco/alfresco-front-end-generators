@@ -1,0 +1,24 @@
+{
+  "$id": "<%= directory %>",
+  "$version": "1.0.0",
+  "$vendor": "Your name or company name",
+  "$name": "<%= name %>",
+  "$description": "",
+  "$license": "MIT",
+
+  "features": {
+    "navbar": [
+      {
+        "id": "<%= directory %>.nav",
+        "items": [
+          {
+            "id": "<%= directory %>.main",
+            "icon": "extension",
+            "title": "<%= name %> Extension",
+            "route": "<%= directory %>"
+        }
+      ]
+    }
+  ]
+}
+}
