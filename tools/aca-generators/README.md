@@ -1,7 +1,3 @@
-# aca-generators
+# ACA generators
 
-This library was generated with [Nx](https://nx.dev).
-
-## Building
-
-Run `nx build aca-generators` to build the library.
+This plugin represents a set of ACA related generators. To build and work with it check out [how to work with plugins locally](../../docs/developer-docs/verdaccio.md).

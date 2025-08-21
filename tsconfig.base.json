@@ -15,13 +15,15 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@alfresco-front-end-generators/aca-generators": [
+        "tools/aca-generators/src/index.ts"
+      ],
       "@alfresco-front-end-generators/adf-generators": [
         "tools/adf-generators/src/index.ts"
       ],
       "@alfresco-front-end-generators/adw-generators": [
         "tools/adw-generators/src/index.ts"
-      ],
-      "aca-generators": ["tools/aca-generators/src/index.ts"]
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]

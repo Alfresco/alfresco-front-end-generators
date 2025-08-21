@@ -1,0 +1,19 @@
+import { provideTranslations } from '@alfresco/adf-core';
+import { provideExtensionConfig, provideExtensions } from '@alfresco/adf-extensions';
+import { EnvironmentProviders, Provider } from '@angular/core';
+import { provideShellRoutes } from '@alfresco/adf-core/shell';
+import { <%= name %>Component } from './<%= directory %>/<%= directory %>.component';
+import { <%= name %>_ROUTES } from './<%= directory %>.routes';
+
+export function provide<%= name %>Extension(): (Provider | EnvironmentProviders)[] {
+  return [
+    provideTranslations('<%= directory %>', 'assets/<%= directory %>'),
+    provideExtensionConfig(['<%= directory %>.json']),
+    provideShellRoutes(<%= name %>_ROUTES),
+    provideExtensions({
+      components: {
+        '<%= directory %>.main.component': <%= name %>Component
+      }
+    })
+  ];
+}
