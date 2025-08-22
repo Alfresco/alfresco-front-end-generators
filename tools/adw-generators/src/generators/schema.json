@@ -12,7 +12,16 @@
         "index": 0
       },
       "x-prompt": "What name would you like to use?"
+    },
+    "directory": {
+      "type": "string",
+      "description": "Directory where new library will be created.",
+      "$default": {
+        "$source": "argv",
+        "index": 1
+      },
+      "x-prompt": "What should be the directory name for the new library?"
     }
   },
-  "required": ["name"]
+  "required": ["name", "directory"]
 }
