@@ -47,6 +47,24 @@ when application is started, log in and notice the new navigation item in the me
 
 ![Newly generated extension component](docs/images/aca-extension.png)
 
+## Installing the ADW generators plugin
+Use the following command to install the ADW generators plugin:
+```sh
+nx add @alfresco-front-end-generators/adw-generators
+```
+
+## Generating new ADW extension
+If you don't have the monorepo containing ADW on your machine, check if you have required permissions and clone it. Make sure you install the dependencies. Next move in the monorepo main directory and run:
+```sh
+nx generate @alfresco-front-end-generators/adw-generators:adw-extension
+```
+Provide the name and the directory for your new extension e.g. `MkExt` and `mk-ext` and once generator is done simply run:
+```sh
+npm start content-ee
+```
+
+when application is started, log in and notice the new navigation item in the menu, after clicking on it you should be navigated to `http://localhost:4200/#/mk-ext` where `mk-ext` will be path to your extension.
+
 ## Next steps
 To explore ADF based application features, ACA/ADW generators and other features check out the recipes we created for you in [Recipes page](./docs/recipes/recipes.md).
 

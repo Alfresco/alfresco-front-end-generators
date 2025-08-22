@@ -1,49 +1,11 @@
 {
   "name": "@alfresco-front-end-generators/adw-generators",
   "version": "0.0.1",
-  "private": true,
-  "main": "./dist/index.js",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "exports": {
-    "./package.json": "./package.json",
-    ".": {
-      "development": "./src/index.ts",
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "default": "./dist/index.js"
-    }
-  },
-  "nx": {
-    "targets": {
-      "build": {
-        "executor": "@nx/js:tsc",
-        "outputs": [
-          "{options.outputPath}"
-        ],
-        "options": {
-          "outputPath": "tools/adw-generators/dist",
-          "main": "tools/adw-generators/src/index.ts",
-          "tsConfig": "tools/adw-generators/tsconfig.lib.json",
-          "rootDir": "tools/adw-generators/src",
-          "generatePackageJson": false,
-          "assets": [
-            {
-              "input": "./tools/adw-generators/src",
-              "glob": "**/!(*.ts)",
-              "output": "."
-            },
-            {
-              "input": "./tools/adw-generators/src",
-              "glob": "**/*.d.ts",
-              "output": "."
-            }
-          ]
-        }
-      }
-    }
-  },
+  "type": "commonjs",
+  "main": "./src/index.js",
+  "types": "./src/index.d.ts",
   "dependencies": {
+    "@nx/angular": "^21.3.3",
     "@nx/devkit": "21.3.3",
     "tslib": "^2.3.0"
   },

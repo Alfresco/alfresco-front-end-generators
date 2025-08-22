@@ -5,6 +5,7 @@
   <% } %>
   <% if(provider == 'BPM' || provider == 'ALL') { %>
   "bpmHost": "{protocol}//{hostname}{:port}",
+  "disableCSRF": false,
   <% } %>
   "providers": "<%= provider %>",
   "authType": "<%= authType %>",

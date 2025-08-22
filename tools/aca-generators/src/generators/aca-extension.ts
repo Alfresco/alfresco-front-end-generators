@@ -37,14 +37,14 @@ export async function acaExtensionGenerator(
 
   updateJson(tree, 'app/project.json', (projectJson) => {
     const pluginConfig = {
-      glob: 'mk-ext.json',
-      input: 'projects/mk-ext/assets',
+      glob: `${options.directory}.json`,
+      input: `projects/${options.directory}/assets`,
       output: './assets/plugins',
     };
     const i18nConfig = {
       glob: '**/*',
-      input: 'projects/mk-ext/assets/i18n',
-      output: './assets/mk-ext/i18n',
+      input: `projects/${options.directory}/assets/i18n`,
+      output: `./assets/${options.directory}/i18n`,
     };
     projectJson.targets.build.options.assets.push(pluginConfig);
     projectJson.targets.build.options.assets.push(i18nConfig);

@@ -6,6 +6,16 @@
   "$description": "",
   "$license": "MIT",
 
+  "routes": [
+    {
+      "id": "app.route.<%= directory %>",
+      "parentRoute": "",
+      "path": "<%= directory %>",
+      "layout": "app.layout.main",
+      "component": "<%= directory %>.main.component",
+      "auth": ["content-services.auth"]
+    }
+  ],
   "features": {
     "navbar": [
       {
