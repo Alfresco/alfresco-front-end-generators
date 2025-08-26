@@ -1,5 +1,5 @@
 <div class="app-container">
-  <h1>Welcome to the <%= projectName %> application!</h1>
+  <h1>Welcome to the <%= name %> application!</h1>
   <p>Explore the features and functionalities by checking out the tutorials section.</p>
   <p>If you want to generate an ADF based application with ACS or APS integrated you might want to check other generators from <b>adf-generators</b> plugin.</p>
 </div>
