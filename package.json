@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "build": "nx run-many --targets build",
-    "release": "nx run-many --target=nx-release-publish --tag=latest"
+    "release": "nx run-many --target=nx-release-publish --tag=latest --exclude alfresco-front-end-generators"
   },
   "repository": {
     "type": "git",
