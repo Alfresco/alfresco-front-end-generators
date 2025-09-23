@@ -1,13 +1,14 @@
 {
   "name": "@alfresco-front-end-generators/adw-generators",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "type": "commonjs",
   "main": "./src/index.js",
   "types": "./src/index.d.ts",
   "dependencies": {
     "@nx/angular": "^21.3.3",
     "@nx/devkit": "21.3.3",
-    "tslib": "^2.3.0"
+    "tslib": "^2.3.0",
+    "ts-morph": "26.0.0"
   },
   "generators": "./generators.json"
 }

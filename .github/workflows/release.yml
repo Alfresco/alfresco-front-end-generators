@@ -1,0 +1,69 @@
+name: Release workflow
+run-name: Release workflow triggered from ${{ github.ref_name }} branch
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  publish-npm:
+    name: "Publish to NPM registry"
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 2
+
+      - uses: actions/setup-node@v4
+        name: setup NPM registry
+        with:
+          node-version-file: '.nvmrc'
+          registry-url: 'https://registry.npmjs.org'
+          scope: '@alfresco'
+
+      - name: publish to NPM
+        run: |
+          nx release publish --tag latest
+
+  publish-git-tag:
+    name: "Publish Git Tag"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'npm'
+
+      - uses: Alfresco/alfresco-build-tools/.github/actions/configure-git-author@v8.33.0
+        with:
+          username: ${{ vars.BOT_GITHUB_USERNAME }}
+          email: ${{ vars.BOT_GITHUB_EMAIL }}
+          global: true
+
+      - name: publish tag
+        shell: bash
+        run: |
+            VERSION=$(jq -cr '.version' < package.json)
+            echo "git tag -a ${VERSION} -m ${VERSION}"
+
+            if [ $(git tag -l "$VERSION") ]; then
+              echo "Tag \"$VERSION\" already exists. Skipping."
+            else
+              git tag -a ${VERSION} -m "${VERSION} [ci skip] "
+              git remote rm origin
+              GITHUB_REPO=https://${{ secrets.GITHUB_TOKEN }}:x-oauth-basic@github.com/Alfresco/alfresco-front-end-generators.git
+              git remote add origin $GITHUB_REPO
+              git push origin --tags
+            fi
+
+
