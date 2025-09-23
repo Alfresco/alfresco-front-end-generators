@@ -16,7 +16,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v5
         with:
-          fetch-depth: 2
+          fetch-depth: 0
 
       - uses: actions/setup-node@v4
         name: setup NPM registry
@@ -27,7 +27,7 @@ jobs:
 
       - name: publish to NPM
         run: |
-          nx release publish --tag latest
+          npm run nx release publish --tag latest
 
   publish-git-tag:
     name: "Publish Git Tag"
