@@ -25,6 +25,10 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
           scope: '@alfresco'
 
+      - name: install dependencies
+        run: |
+          npm install
+
       - name: publish to NPM
         run: |
           npm run nx release publish --tag latest
