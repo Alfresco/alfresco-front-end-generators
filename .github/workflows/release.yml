@@ -23,7 +23,6 @@ jobs:
         with:
           node-version-file: '.nvmrc'
           registry-url: 'https://registry.npmjs.org'
-          scope: '@alfresco'
 
       - name: install dependencies
         run: |
