@@ -29,9 +29,13 @@ jobs:
         run: |
           npm install
 
+      - name: build plugins
+        run: |
+          npm run build
+
       - name: publish to NPM
         run: |
-          npm run nx release publish --tag latest
+          npm run release
 
   publish-git-tag:
     name: "Publish Git Tag"

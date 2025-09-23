@@ -4,7 +4,10 @@
   "description": "Alfresco front-end generators",
   "author": "Alfresco Software, Ltd.",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "build": "nx run-many --targets build",
+    "release": "nx run-many --target=nx-release-publish --tag=latest"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/Alfresco/alfresco-front-end-generators.git"
