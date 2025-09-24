@@ -1,5 +1,5 @@
 {
-  "name": "@alfresco-front-end-generators/adw-generators",
+  "name": "@alfresco/adw-generators",
   "version": "1.0.0",
   "type": "commonjs",
   "main": "./src/index.js",

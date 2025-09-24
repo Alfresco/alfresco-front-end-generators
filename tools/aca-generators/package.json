@@ -1,5 +1,5 @@
 {
-  "name": "@alfresco-front-end-generators/aca-generators",
+  "name": "@alfresco/aca-generators",
   "version": "1.0.0",
   "type": "commonjs",
   "main": "./src/index.js",

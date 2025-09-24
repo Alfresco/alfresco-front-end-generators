@@ -11,13 +11,13 @@ Before you start using this development framework and the generator, make sure y
 ## Installing the ADF generators plugin
 Use the following command to install the ADF generators plugin:
 ```sh
-nx add @alfresco-front-end-generators/adf-generators
+nx add @alfresco/adf-generators
 ```
 
 ## Generating new ADF based application
 First, move in the folder where you want create your project. Select a generator you would like to use e.g. `template-app` and run:
 ```sh
-nx generate @alfresco-front-end-generators/adf-generators:template-app
+nx generate @alfresco/adf-generators:template-app
 ```
 Answer couple of questions, choose the right template (ACS only, APS only or ACS and APS combined), authentication type and provider and the new app will be generated in folder with the same name as selected application name.
 
@@ -30,13 +30,13 @@ npm start
 ## Installing the ACA generators plugin
 Use the following command to install the ACA generators plugin:
 ```sh
-nx add @alfresco-front-end-generators/aca-generators
+nx add @alfresco/aca-generators
 ```
 
 ## Generating new ACA extension
 If you don't have the ACA repo on your machine clone it from [Alfresco Content App GitHub](https://github.com/Alfresco/alfresco-content-app). Make sure you install the dependencies and check out the [Readme file](https://github.com/Alfresco/alfresco-content-app/blob/develop/README.md). Next move in the ACA main directory and run:
 ```sh
-nx generate @alfresco-front-end-generators/aca-generators:aca-extension
+nx generate @alfresco/aca-generators:aca-extension
 ```
 Provide the name and the directory for your new extension e.g. `MkExt` and `mk-ext` and once generator is done simply run:
 ```sh
@@ -50,13 +50,13 @@ when application is started, log in and notice the new navigation item in the me
 ## Installing the ADW generators plugin
 Use the following command to install the ADW generators plugin:
 ```sh
-nx add @alfresco-front-end-generators/adw-generators
+nx add @alfresco/adw-generators
 ```
 
 ## Generating new ADW extension
 If you don't have the monorepo containing ADW on your machine, check if you have required permissions and clone it. Make sure you install the dependencies. Next move in the monorepo main directory and run:
 ```sh
-nx generate @alfresco-front-end-generators/adw-generators:adw-extension
+nx generate @alfresco/adw-generators:adw-extension
 ```
 Provide the name and the directory for your new extension e.g. `MkExt` and `mk-ext` and once generator is done simply run:
 ```sh

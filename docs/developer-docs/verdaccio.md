@@ -41,20 +41,20 @@ npm config delete registry
 Now to test local changes done to any plugin you can build it, bump it's version if the same is already published and publish it to your local Verdaccio instance, for example for `adf-generators` you can do the following:
 
 ```
-npx nx build adf-generators
-npx nx release version x.y.z
-npx nx release publish @alfresco-front-end-generators/adf-generators
+nx build adf-generators
+nx release version x.y.z
+nx run adf-generators:nx-release-publish
 ```
 
 or you can build and release all plugins at once: 
 
 ```
-npx nx run-many --targets build
-npx nx release version x.y.z
-npx nx release publish --tag latest
+npm run build
+nx release version x.y.z
+npm run release
 ```
 
 Once the plugin gets published you can test any generator from any plugin for example `empty-app` from `adf-generators` using the following command:
 ```
-nx generate @alfresco-front-end-generators/adf-generators:empty-app
+nx generate @alfresco/adf-generators:empty-app
 ```
