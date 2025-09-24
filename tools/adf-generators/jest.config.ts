@@ -10,7 +10,7 @@ const swcJestConfig = JSON.parse(
 swcJestConfig.swcrc = false;
 
 export default {
-  displayName: '@alfresco-front-end-generators/adf-generators',
+  displayName: '@alfresco/adf-generators',
   preset: '../../jest.preset.js',
   testEnvironment: 'node',
   transform: {
