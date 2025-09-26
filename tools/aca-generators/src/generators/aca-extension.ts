@@ -1,7 +1,6 @@
 import { formatFiles, generateFiles, Tree, updateJson } from '@nx/devkit';
 import * as path from 'path';
 import { AcaExtensionGeneratorSchema } from './schema';
-import { libraryGenerator, UnitTestRunner } from '@nx/angular/generators';
 import { TsCodeModifiersProject } from './ts-code-modifiers';
 
 export async function acaExtensionGenerator(
@@ -9,17 +8,6 @@ export async function acaExtensionGenerator(
   options: AcaExtensionGeneratorSchema
 ) {
   const projectRoot = `projects/${options.directory}`;
-  await libraryGenerator(tree, {
-    directory: projectRoot,
-    name: options.directory,
-    buildable: true,
-    publishable: true,
-    importPath: `@alfresco/${options.directory}`,
-    style: 'scss',
-    prefix: 'aca',
-    unitTestRunner: UnitTestRunner.None,
-    viewEncapsulation: 'None',
-  });
   generateFiles(tree, path.join(__dirname, 'files'), projectRoot, options);
 
   const tsCodeModifiersProject = new TsCodeModifiersProject(tree, '.');
@@ -33,6 +21,7 @@ export async function acaExtensionGenerator(
     'provideApplicationExtensions',
     `...provide${options.name}Extension()`
   );
+
   tsCodeModifiersProject.formatAndSave();
 
   updateJson(tree, 'app/project.json', (projectJson) => {
@@ -51,15 +40,14 @@ export async function acaExtensionGenerator(
     return projectJson;
   });
 
-  updateJson(tree, `projects/${options.directory}/ng-package.json`, (ngPackage) => {
-    ngPackage.dest = `../../dist/@alfresco/${options.directory}`;
-    ngPackage.assets = ["assets"]
-    return ngPackage;
-  });
-
-  updateJson(tree, `projects/${options.directory}/project.json`, (projectJson) => {
-    projectJson.targets.build.outputs = [`{workspaceRoot}/dist/@alfresco/${options.directory}`];
-    return projectJson;
+  updateJson(tree, 'tsconfig.json', (tsConfig) => {
+    if (!tsConfig.compilerOptions.paths) {
+      tsConfig.compilerOptions.paths = {};
+    }
+    tsConfig.compilerOptions.paths[`@alfresco/${options.directory}`] = [
+      `projects/${options.directory}/src/index.ts`,
+    ];
+    return tsConfig;
   });
 
   await formatFiles(tree);

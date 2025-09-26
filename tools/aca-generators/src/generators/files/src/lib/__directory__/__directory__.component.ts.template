@@ -1,0 +1,10 @@
+import { Component, ViewEncapsulation } from '@angular/core';
+
+@Component({
+  selector: 'aca-<%= directory %>',
+  imports: [],
+  templateUrl: './<%= directory %>.component.html',
+  styleUrl: './<%= directory %>.component.scss',
+  encapsulation: ViewEncapsulation.None
+})
+export class <%= name %>Component {}

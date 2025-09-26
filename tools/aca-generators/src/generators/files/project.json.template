@@ -1,0 +1,39 @@
+{
+  "name": "<%= directory %>",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "projects/<%= directory %>",
+  "projectType": "library",
+  "prefix": "aca",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:ng-packagr",
+      "options": {
+        "tsConfig": "projects/<%= directory %>/tsconfig.lib.json",
+        "project": "projects/<%= directory %>/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "projects/<%= directory %>/tsconfig.lib.prod.json"
+        }
+      },
+      "defaultConfiguration": "production",
+      "outputs": ["{workspaceRoot}/dist/@alfresco/<%= directory %>"]
+    },
+    "test": {
+      "executor": "@angular-devkit/build-angular:karma",
+      "options": {
+        "codeCoverage": true,
+        "main": "projects/<%= directory %>/test.ts",
+        "tsConfig": "projects/<%= directory %>/tsconfig.spec.json",
+        "karmaConfig": "projects/<%= directory %>/karma.conf.js",
+        "codeCoverageExclude": [],
+        "stylePreprocessorOptions": {
+          "includePaths": ["node_modules"]
+        }
+      }
+    },
+    "lint": {
+      "executor": "@angular-eslint/builder:lint"
+    }
+  }
+}

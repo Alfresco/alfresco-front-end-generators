@@ -1,0 +1,39 @@
+{
+  "name": "<%= directory %>",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/content-ee/<%= directory %>",
+  "projectType": "library",
+  "prefix": "adw",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:ng-packagr",
+      "options": {
+        "tsConfig": "libs/content-ee/<%= directory %>/tsconfig.lib.json",
+        "project": "libs/content-ee/<%= directory %>/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/content-ee/<%= directory %>/tsconfig.lib.prod.json"
+        }
+      },
+      "defaultConfiguration": "production",
+      "outputs": ["{workspaceRoot}/dist/libs/content-ee/<%= directory %>"]
+    },
+    "test": {
+      "executor": "@angular-devkit/build-angular:karma",
+      "options": {
+        "codeCoverage": true,
+        "main": "libs/content-ee/<%= directory %>/test.ts",
+        "tsConfig": "libs/content-ee/<%= directory %>/tsconfig.spec.json",
+        "karmaConfig": "libs/content-ee/<%= directory %>/karma.conf.js",
+        "codeCoverageExclude": [],
+        "stylePreprocessorOptions": {
+          "includePaths": ["node_modules"]
+        }
+      }
+    },
+    "lint": {
+      "executor": "@angular-eslint/builder:lint"
+    }
+  }
+}

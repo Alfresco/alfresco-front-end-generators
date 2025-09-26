@@ -1,7 +1,6 @@
 import { formatFiles, generateFiles, Tree, updateJson } from '@nx/devkit';
 import * as path from 'path';
 import { AdwExtensionGeneratorSchema } from './schema';
-import { libraryGenerator, UnitTestRunner } from '@nx/angular/generators';
 import { TsCodeModifiersProject } from './ts-code-modifiers';
 
 export async function adwExtensionGenerator(
@@ -9,17 +8,6 @@ export async function adwExtensionGenerator(
   options: AdwExtensionGeneratorSchema
 ) {
   const projectRoot = `libs/content-ee/${options.directory}`;
-  await libraryGenerator(tree, {
-    directory: projectRoot,
-    name: options.directory,
-    buildable: true,
-    publishable: true,
-    importPath: `@alfresco/${options.directory}`,
-    style: 'scss',
-    prefix: 'aca',
-    unitTestRunner: UnitTestRunner.None,
-    viewEncapsulation: 'None',
-  });
   generateFiles(tree, path.join(__dirname, 'files'), projectRoot, options);
 
   const tsCodeModifiersProject = new TsCodeModifiersProject(tree, '.');
@@ -47,15 +35,14 @@ export async function adwExtensionGenerator(
     return projectJson;
   });
 
-  updateJson(tree, `libs/content-ee/${options.directory}/ng-package.json`, (ngPackage) => {
-    ngPackage.dest = `../../dist/alfresco-digital-workspace/${options.directory}`;
-    ngPackage.assets = ["assets"]
-    return ngPackage;
-  });
-
-  updateJson(tree, `libs/content-ee/${options.directory}/project.json`, (projectJson) => {
-    projectJson.targets.build.outputs = [`{workspaceRoot}/dist/alfresco-digital-workspace/${options.directory}`];
-    return projectJson;
+  updateJson(tree, 'tsconfig.base.json', (tsConfig) => {
+    if (!tsConfig.compilerOptions.paths) {
+      tsConfig.compilerOptions.paths = {};
+    }
+    tsConfig.compilerOptions.paths[`@alfresco/${options.directory}`] = [
+      `libs/content-ee/${options.directory}/src/index.ts`,
+    ];
+    return tsConfig;
   });
 
   await formatFiles(tree);
