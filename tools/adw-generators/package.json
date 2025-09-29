@@ -1,6 +1,6 @@
 {
   "name": "@alfresco/adw-generators",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "type": "commonjs",
   "main": "./src/index.js",
   "types": "./src/index.d.ts",
@@ -8,7 +8,6 @@
     "access": "public"
   },
   "dependencies": {
-    "@nx/angular": "^21.3.3",
     "@nx/devkit": "21.3.3",
     "tslib": "^2.3.0",
     "ts-morph": "26.0.0"
