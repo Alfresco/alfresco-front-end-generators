@@ -1,5 +1,5 @@
 module.exports = {
-    <% if(template == 'acs' || template == 'acs-aps') { %>
+    <% if(template == 'acs' || template == 'acs-aps' || template == 'acs-apa') { %>
     "/alfresco": {
       "target": "http://localhost:8080",
       "secure": false,
@@ -36,5 +36,31 @@ module.exports = {
       "secure": false,
       "changeOrigin": true,
     },
+    <% } %>
+    <% if(template == 'apa' || template == 'acs-apa') { %>
+    "/auth/admin/realms/myrealm": {
+        "target": "http://0.0.0.0:8080",
+        "secure": false,
+        "pathRewrite": {
+            "^/auth/admin/realms/myrealm": ""
+        },
+        "changeOrigin": true,
+        "logLevel": "debug"
+    },
+    "/auth/realms/myrealm": {
+        "target": "http://0.0.0.0:8080",
+        "secure": false,
+        "pathRewrite": {
+            "^/auth/realms/myrealm": ""
+        },
+        "changeOrigin": true,
+        "logLevel": "debug"
+    },
+    "/": {
+        "target": "http://0.0.0.0:8080",
+        "secure": false,
+        "changeOrigin": true,
+        "logLevel": "debug"
+    }
     <% } %>
 };

@@ -1,0 +1,15 @@
+<div class="app-tasks-header">
+  <h3>Tasks</h3>
+
+  @if (appName) {
+    <button mat-stroked-button color="primary" [routerLink]="['/apps', appName, 'start-process']">
+      Start new process
+    </button>
+  }
+</div>
+
+<adf-cloud-task-list
+  [appName]="appName"
+  (rowClick)="onRowClick($event)"
+>
+</adf-cloud-task-list>

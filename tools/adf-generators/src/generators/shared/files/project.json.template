@@ -50,6 +50,13 @@
             "output": "/assets"
           },
           <% } %>
+          <% if(template == 'apa' || template == 'acs-apa') { %>
+          {
+            "glob": "**/*",
+            "input": "node_modules/@alfresco/adf-process-services-cloud/bundles/assets",
+            "output": "/assets"
+          },
+          <% } %>
           {
             "glob": "pdf.worker.min.mjs",
             "input": "node_modules/pdfjs-dist/build",

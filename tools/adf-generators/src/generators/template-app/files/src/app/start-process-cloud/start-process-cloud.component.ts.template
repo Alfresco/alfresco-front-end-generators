@@ -1,0 +1,37 @@
+import { StartProcessCloudComponent } from '@alfresco/adf-process-services-cloud';
+import { CommonModule } from '@angular/common';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+
+@Component({
+  selector: 'app-start-process-cloud',
+  templateUrl: './start-process-cloud.component.html',
+  encapsulation: ViewEncapsulation.None,
+  standalone: true,
+  imports: [CommonModule, RouterModule, StartProcessCloudComponent]
+})
+export class StartProcessComponent implements OnInit {
+
+  appName: string = null;
+
+  constructor(private router: Router,
+              private route: ActivatedRoute) { }
+
+  ngOnInit() {
+    this.route.params.subscribe(params => {
+      if (params.appName) {
+          this.appName = params.appName;
+      } else {
+        this.router.navigate(['/apps']);
+      }
+    });
+  }
+
+  onProcessStarted() {
+    this.router.navigate(['/apps', this.appName || 0, 'tasks']);
+  }
+
+  onCancelStartProcess() {
+    this.router.navigate(['/apps', this.appName || 0, 'tasks']);
+  }
+}

@@ -21,7 +21,7 @@
           <div class="sidenav-menu-label">Login</div>
           }
         </a>
-        <% if(template == 'acs' || template == 'acs-aps') { %>
+        <% if(template == 'acs' || template == 'acs-aps' || template == 'acs-apa') { %>
         <a mat-list-item class="adf-sidenav-link" routerLinkActive="active" routerLink="/documents">
           <mat-icon matListIcon class="sidenav-menu-icon">folder_open</mat-icon>
           @if (!isMenuMinimized()) {
@@ -32,6 +32,14 @@
         <% if(template == 'aps' || template == 'acs-aps') { %>
         <a mat-list-item class="adf-sidenav-link" routerLinkActive="active" routerLink="/apps">
           <mat-icon matListIcon class="sidenav-menu-icon">device_hub</mat-icon>
+          @if (!isMenuMinimized()) {
+          <div class="sidenav-menu-label" *ngIf="!isMenuMinimized()">Apps</div>
+          }
+        </a>
+        <% } %>
+        <% if(template == 'apa' || template == 'acs-apa') { %>
+        <a mat-list-item class="adf-sidenav-link" routerLinkActive="active" routerLink="/apps">
+          <mat-icon matListIcon class="sidenav-menu-icon">cloud</mat-icon>
           @if (!isMenuMinimized()) {
           <div class="sidenav-menu-label" *ngIf="!isMenuMinimized()">Apps</div>
           }

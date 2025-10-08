@@ -1,0 +1,55 @@
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { FormRenderingService } from '@alfresco/adf-core';
+import { CustomEditorComponent } from '../stencils/custom-editor.component';
+import { PreviewService } from '../services/preview.service';
+import { CommonModule } from '@angular/common';
+import { TaskHeaderCloudComponent } from '@alfresco/adf-process-services-cloud';
+
+@Component({
+  selector: 'app-task-details-cloud',
+  templateUrl: './task-details-cloud.component.html',
+  encapsulation: ViewEncapsulation.None,
+  standalone: true,
+  imports: [CommonModule, TaskHeaderCloudComponent]
+})
+export class AppTaskDetailsCloudComponent implements OnInit {
+  appName: string = null;
+  taskId: string = null;
+  fileShowed: any = null;
+  content: any = null;
+  contentName: any = null;
+
+  constructor(
+    private route: ActivatedRoute,
+    formRenderingService: FormRenderingService,
+    private preview: PreviewService
+  ) {
+    formRenderingService.setComponentTypeResolver(
+      'testole_01',
+      () => CustomEditorComponent,
+      true
+    );
+  }
+
+  ngOnInit() {
+    this.route.params.subscribe((params) => {
+      if (params.appName) {
+        this.appName = params.appName;
+      }
+      if (params.taskId) {
+        this.taskId = params.taskId;
+      }
+    });
+  }
+
+  onContentClick(content: any): void {
+    if (content.contentBlob) {
+      this.preview.showBlob(content.name, content.contentBlob);
+    } else {
+      this.preview.showResource(content.sourceId.split(';')[0]);
+    }
+  }
+}
+export { CustomEditorComponent };
+
