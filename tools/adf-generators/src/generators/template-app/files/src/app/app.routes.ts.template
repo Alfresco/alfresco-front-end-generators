@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { <% if(template == 'aps' || template == 'acs-aps') { %>AuthGuardBpm, <% } %>AuthGuardEcm } from '@alfresco/adf-core';
+import { <% if(template == 'aps' || template == 'acs-aps' || template == 'apa' || template == 'acs-apa') { %>AuthGuardBpm, <% } %>AuthGuardEcm } from '@alfresco/adf-core';
 import { HomeComponent } from './home/home.component';
 import { AppLoginComponent } from './login/login.component';
 <% if(template == 'acs' || template == 'acs-aps') { %>import { DocumentsComponent } from './documents/documents.component';<% } %>
@@ -10,6 +10,11 @@ import { AppsComponent } from './apps/apps.component';
 import { TasksComponent } from './tasks/tasks.component';
 import { AppTaskDetailsComponent } from './task-details/task-details.component';
 import { StartProcessComponent } from './start-process/start-process.component';
+<% } %>
+<% if(template == 'apa' || template == 'acs-apa') { %>import { AppsCloudComponent } from './apps-cloud/apps-cloud.component';
+import { TasksCloudComponent } from './tasks-cloud/tasks-cloud.component';
+import { AppTaskDetailsCloudComponent } from './task-details-cloud/task-details-cloud.component';
+import { StartProcessComponent } from './start-process-cloud/start-process-cloud.component';
 <% } %>
 
 export const APP_ROUTES: Routes = [
@@ -40,7 +45,7 @@ export const APP_ROUTES: Routes = [
         path: 'home',
         component: HomeComponent,
       },
-      <% if(template == 'acs' || template == 'acs-aps') { %>
+      <% if(template == 'acs' || template == 'acs-aps' || template == 'acs-apa') { %>
       {
         path: 'documents',
         component: DocumentsComponent,
@@ -67,6 +72,28 @@ export const APP_ROUTES: Routes = [
         path: 'apps/:appId/start-process',
         component: StartProcessComponent,
         canActivate: [ AuthGuardBpm ]
+      }
+      <% } %>
+      <% if(template == 'apa' || template == 'acs-apa') { %>
+      {
+        path: 'apps',
+        component: AppsCloudComponent,
+        canActivate: [AuthGuardBpm]
+      },
+      {
+        path: 'apps/:appName/tasks',
+        component: TasksComponent,
+        canActivate: [AuthGuardBpm]
+      },
+      {
+        path: 'apps/:appName/tasks/:taskId',
+        component: TaskDetailsComponent,
+        canActivate: [AuthGuardBpm]
+      },
+      {
+        path: 'apps/:appName/start-process',
+        component: StartProcessComponent,
+        canActivate: [AuthGuardBpm]
       }
       <% } %>
     ],

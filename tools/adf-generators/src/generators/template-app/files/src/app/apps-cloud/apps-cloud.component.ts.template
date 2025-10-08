@@ -1,0 +1,19 @@
+import { Component, ViewEncapsulation } from '@angular/core';
+import { Router, RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { AppListCloudComponent } from '@alfresco/adf-process-services-cloud';
+
+@Component({
+  selector: 'app-apps-cloud',
+  templateUrl: './apps-cloud.component.html',
+  encapsulation: ViewEncapsulation.None,
+  standalone: true,
+  imports: [CommonModule, AppListCloudComponent, RouterModule]
+})
+export class AppsCloudComponent {
+  constructor(private router: Router) {}
+
+  onAppClicked(app: any) {
+    this.router.navigate(['/apps', app.name, 'tasks']);
+  }
+}

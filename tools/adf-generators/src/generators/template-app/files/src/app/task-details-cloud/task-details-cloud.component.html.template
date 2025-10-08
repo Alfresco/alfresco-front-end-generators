@@ -1,0 +1,6 @@
+<h3>Task details</h3>
+
+<adf-cloud-task-header
+    [taskId]="taskId"
+    [appName]="appName">
+</adf-cloud-task-header>

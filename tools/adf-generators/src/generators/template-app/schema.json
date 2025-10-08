@@ -35,6 +35,14 @@
           {
             "value": "acs-aps",
             "label": "ACS and APS functionalities integrated"
+          },
+          {
+            "value": "apa",
+            "label": "APA functionalities integrated"
+          },
+          {
+            "value": "acs-apa",
+            "label": "ACS and APA functionalities integrated"
           }
         ]
       }
