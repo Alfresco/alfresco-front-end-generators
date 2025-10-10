@@ -3,10 +3,12 @@
 Set of [NX based plugins with generators](https://nx.dev/features/generate-code) crafted for lightweight and fast code generation. You can explore generators for: ADF based applications, ACA and ADW extensions.
 
 ## Prerequisites
-Before you start using this development framework and the generator, make sure you have installed all required software:
+Before you start using this development framework and generators, make sure you have installed all required software:
 
 * Install [Node.js](https://nodejs.org/en/download/) version matching the one specified in `.nvmrc` file
 * Make sure to globally install NX following this guide [NX installation guide](https://nx.dev/getting-started/installation)
+
+Every NX-based generator has to be used within the NX workspace so if you're planning to use them in the repository without NX you can simply [add NX to your repository](https://nx.dev/docs/getting-started/installation#adding-nx-to-your-repository). Alternatively if you do not have any repository already set up you can use NX to create [starter repository](https://nx.dev/docs/getting-started/installation#starter-repository).
 
 ## Installing the ADF generators plugin
 Use the following command to install the ADF generators plugin:
@@ -19,9 +21,17 @@ First, move in the folder where you want create your project. Select a generator
 ```sh
 nx generate @alfresco/adf-generators:template-app
 ```
-Answer couple of questions, choose the right template (ACS only, APS only or ACS and APS combined), authentication type and provider and the new app will be generated in folder with the same name as selected application name.
+Answer couple of questions, choose the right template, authentication type and provider and the new app will be generated in folder with the same name as selected application name.
 
-Next before running the application go to the generated folder, open `proxy.conf.js` file and verify if generated proxies are matching your ACS and/or APS instances. Once this is done you will need to run the following scripts:
+Next before running the application go to the generated folder, open `proxy.conf.js` file and provide the proper values for `ecmHost` and/or `bpmHost` variables to match your datasource (ACS/APS/Automate) instances.
+
+In case of selecting `Automate` as template you also need to provide the right values for several variables in `app.config.json` for example:
+* `APP_CONFIG_OAUTH2_HOST`
+* `APP_CONFIG_OAUTH2_CLIENTID`
+* `APP_CONFIG_OAUTH2_SCOPE`
+* `APP_CONFIG_APPS_DEPLOYED`
+
+ Once this is done you will need to run the following scripts:
 ```sh
 npm install
 npm start
