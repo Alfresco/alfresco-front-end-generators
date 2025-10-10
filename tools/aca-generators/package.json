@@ -1,6 +1,6 @@
 {
   "name": "@alfresco/aca-generators",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "type": "commonjs",
   "main": "./src/index.js",
   "types": "./src/index.d.ts",

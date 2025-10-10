@@ -1,6 +1,6 @@
 {
   "name": "alfresco-front-end-generators",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "Alfresco front-end generators",
   "author": "Alfresco Software, Ltd.",
   "main": "index.js",
