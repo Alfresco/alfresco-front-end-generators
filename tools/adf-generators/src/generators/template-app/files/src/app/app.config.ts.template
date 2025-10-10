@@ -15,7 +15,7 @@ import { ContentModule } from '@alfresco/adf-content-services';
 <% if(template == 'aps' || template == 'acs-aps') { %>
 import { ProcessModule } from '@alfresco/adf-process-services';
 <% } %>
-<% if(template == 'apa' || template == 'acs-apa') { %>
+<% if(template == 'apa' || template == 'acs-apa' || template == 'automate') { %>
 import { ProcessServicesCloudModule } from '@alfresco/adf-process-services-cloud';
 <% } %>
 
@@ -27,7 +27,7 @@ export const AppConfig: ApplicationConfig = {
     <% if(template == 'aps' || template == 'acs-aps') { %>
     importProvidersFrom(ProcessModule.forRoot()),
     <% } %>
-    <% if(template == 'apa' || template == 'acs-apa') { %>
+    <% if(template == 'apa' || template == 'acs-apa' || template == 'automate') { %>
     importProvidersFrom(ProcessServicesCloudModule.forRoot()),
     <% } %>
     provideRouter(APP_ROUTES, withHashLocation()),

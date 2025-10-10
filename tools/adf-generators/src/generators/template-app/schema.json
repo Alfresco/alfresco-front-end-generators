@@ -37,6 +37,10 @@
             "label": "ACS and APS functionalities integrated"
           },
           {
+            "value": "automate",
+            "label": "Automate capabilities integrated"
+          },
+          {
             "value": "apa",
             "label": "APA functionalities integrated"
           },
