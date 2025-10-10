@@ -37,7 +37,7 @@
           }
         </a>
         <% } %>
-        <% if(template == 'apa' || template == 'acs-apa') { %>
+        <% if(template == 'apa' || template == 'acs-apa' || template == 'automate') { %>
         <a mat-list-item class="adf-sidenav-link" routerLinkActive="active" routerLink="/apps">
           <mat-icon matListIcon class="sidenav-menu-icon">cloud</mat-icon>
           @if (!isMenuMinimized()) {

@@ -1,7 +1,10 @@
+const ecmHost = "";
+const bpmHost = "";
+
 module.exports = {
     <% if(template == 'acs' || template == 'acs-aps' || template == 'acs-apa') { %>
     "/alfresco": {
-      "target": "http://localhost:8080",
+      "target": ecmHost,
       "secure": false,
       "changeOrigin": true,
       "pathRewrite": {
@@ -9,7 +12,7 @@ module.exports = {
       },
       onProxyReq: function(request) {
           if(request["method"] !== "GET")
-          request.setHeader("origin", "http://localhost:8080");
+          request.setHeader("origin", ecmHost);
         },
       onProxyRes: function (proxyRes) {
         const header = proxyRes.headers['www-authenticate'];
@@ -21,25 +24,25 @@ module.exports = {
     <% } %>
     <% if(template == 'aps' || template == 'acs-aps') { %>
     "/activiti-app": {
-      "target": "http://localhost:9999",
+      "target": bpmHost,
       "secure": false,
       "changeOrigin": true,
       onProxyReq: function(request) {
         if(request["method"] !== "GET")
-          request.setHeader("origin", "http://localhost:9999");
+          request.setHeader("origin", bpmHost);
       }
     },
     <% } %>
     <% if(authType == 'OAUTH') { %>
     '/auth': {
-      "target": "http://localhost:8080",
+      "target": <% if(template == 'acs' || template == 'acs-aps' || template == 'acs-apa') { %>ecmHost<% } else { %>bpmHost<% } %>,
       "secure": false,
       "changeOrigin": true,
     },
     <% } %>
-    <% if(template == 'apa' || template == 'acs-apa') { %>
+    <% if(template == 'apa' || template == 'acs-apa' || template == 'automate') { %>
     "/auth/admin/realms/myrealm": {
-        "target": "http://0.0.0.0:8080",
+        "target": bpmHost,
         "secure": false,
         "pathRewrite": {
             "^/auth/admin/realms/myrealm": ""
@@ -48,7 +51,7 @@ module.exports = {
         "logLevel": "debug"
     },
     "/auth/realms/myrealm": {
-        "target": "http://0.0.0.0:8080",
+        "target": bpmHost,
         "secure": false,
         "pathRewrite": {
             "^/auth/realms/myrealm": ""
@@ -57,10 +60,17 @@ module.exports = {
         "logLevel": "debug"
     },
     "/": {
-        "target": "http://0.0.0.0:8080",
+        "target": bpmHost,
         "secure": false,
         "changeOrigin": true,
         "logLevel": "debug"
+    },
+    <% } %>
+    <% if(template == 'automate') { %>
+    "/api": {
+      target: ecmHost,
+      logLevel: "debug",
+      secure: false
     }
     <% } %>
 };

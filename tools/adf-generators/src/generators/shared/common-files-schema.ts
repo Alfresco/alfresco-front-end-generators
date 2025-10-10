@@ -1,7 +1,7 @@
 export interface CommonFilesSchema {
   projectName: string;
   projectRoot: string;
-  template: 'empty' | 'acs' | 'aps' | 'acs-aps' | 'apa' | 'acs-apa';
+  template: 'empty' | 'acs' | 'aps' | 'acs-aps' | 'apa' | 'acs-apa' | 'automate';
   authType: 'BASIC' | 'OAUTH';
   provider: 'ECM' | 'BPM' | 'ALL';
 }

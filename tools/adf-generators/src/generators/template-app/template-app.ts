@@ -41,13 +41,13 @@ export async function templateAppGenerator(
     }
   }
 
-  if (options.template === 'aps' || options.template === 'apa') {
+  if (options.template === 'aps' || options.template === 'apa' || options.template === 'automate') {
     if (tree.exists(`${projectRoot}/src/app/documents`)) {
       tree.delete(`${projectRoot}/src/app/documents`);
     }
   }
 
-  if (options.template === 'apa' || options.template === 'acs-apa') {
+  if (options.template === 'apa' || options.template === 'acs-apa' || options.template === 'automate') {
     if (tree.exists(`${projectRoot}/src/app/apps`)) {
       tree.delete(`${projectRoot}/src/app/apps`);
     }
@@ -60,9 +60,15 @@ export async function templateAppGenerator(
     if (tree.exists(`${projectRoot}/src/app/tasks`)) {
       tree.delete(`${projectRoot}/src/app/tasks`);
     }
+    if (tree.exists(`${projectRoot}/src/app/file-view`)) {
+      tree.delete(`${projectRoot}/src/app/file-view`);
+    }
+    if (tree.exists(`${projectRoot}/src/app/services/preview.service.ts`)) {
+      tree.delete(`${projectRoot}/src/app/services/preview.service.ts`);
+    }
   }
 
-  if (options.template !== 'apa' && options.template !== 'acs-apa') {
+  if (options.template !== 'apa' && options.template !== 'acs-apa' && options.template !== 'automate') {
     if (tree.exists(`${projectRoot}/src/app/apps-cloud`)) {
       tree.delete(`${projectRoot}/src/app/apps-cloud`);
     }
