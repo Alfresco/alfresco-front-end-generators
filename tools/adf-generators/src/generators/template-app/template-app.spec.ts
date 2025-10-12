@@ -6,7 +6,7 @@ import { TemplateAppGeneratorSchema } from './schema';
 
 describe('template-app generator', () => {
   let tree: Tree;
-  const options: TemplateAppGeneratorSchema = { name: 'test' };
+  const options: TemplateAppGeneratorSchema = { name: 'test', template: 'acs', authType: 'BASIC', provider: 'ALL' };
 
   beforeEach(() => {
     tree = createTreeWithEmptyWorkspace();
