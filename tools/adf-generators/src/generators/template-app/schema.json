@@ -92,5 +92,5 @@
       }
     }
   },
-  "required": ["name"]
+  "required": ["name", "template", "authType", "provider"]
 }

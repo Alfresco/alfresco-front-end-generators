@@ -23,14 +23,14 @@ export async function templateAppGenerator(
   addCommonFiles(tree, { projectName: options.name, projectRoot, template: options.template, authType: options.authType, provider: options.provider });
   generateFiles(tree, path.join(__dirname, 'files'), projectRoot, options);
 
-  if (options.template === 'acs') {
+  if (options.template === 'acs' || options.template === 'apa' || options.template === 'acs-apa' || options.template === 'automate') {
     if (tree.exists(`${projectRoot}/src/app/apps`)) {
       tree.delete(`${projectRoot}/src/app/apps`);
     }
     if (tree.exists(`${projectRoot}/src/app/start-process`)) {
       tree.delete(`${projectRoot}/src/app/start-process`);
     }
-    if (tree.exists(`${projectRoot}/src/app/stencils`)) {
+    if (tree.exists(`${projectRoot}/src/app/stencils`) && options.template === 'acs') {
       tree.delete(`${projectRoot}/src/app/stencils`);
     }
     if (tree.exists(`${projectRoot}/src/app/task-details`)) {
@@ -44,27 +44,6 @@ export async function templateAppGenerator(
   if (options.template === 'aps' || options.template === 'apa' || options.template === 'automate') {
     if (tree.exists(`${projectRoot}/src/app/documents`)) {
       tree.delete(`${projectRoot}/src/app/documents`);
-    }
-  }
-
-  if (options.template === 'apa' || options.template === 'acs-apa' || options.template === 'automate') {
-    if (tree.exists(`${projectRoot}/src/app/apps`)) {
-      tree.delete(`${projectRoot}/src/app/apps`);
-    }
-    if (tree.exists(`${projectRoot}/src/app/start-process`)) {
-      tree.delete(`${projectRoot}/src/app/start-process`);
-    }
-    if (tree.exists(`${projectRoot}/src/app/task-details`)) {
-      tree.delete(`${projectRoot}/src/app/task-details`);
-    }
-    if (tree.exists(`${projectRoot}/src/app/tasks`)) {
-      tree.delete(`${projectRoot}/src/app/tasks`);
-    }
-    if (tree.exists(`${projectRoot}/src/app/file-view`)) {
-      tree.delete(`${projectRoot}/src/app/file-view`);
-    }
-    if (tree.exists(`${projectRoot}/src/app/services/preview.service.ts`)) {
-      tree.delete(`${projectRoot}/src/app/services/preview.service.ts`);
     }
   }
 
