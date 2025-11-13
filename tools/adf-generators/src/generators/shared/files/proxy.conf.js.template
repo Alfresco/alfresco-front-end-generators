@@ -2,7 +2,7 @@ const ecmHost = "";
 const bpmHost = "";
 
 module.exports = {
-    <% if(template == 'acs' || template == 'acs-aps' || template == 'acs-apa') { %>
+    <% if(template == 'acs' || template == 'acs-aps' || template == 'acs-apa') { -%>
     "/alfresco": {
       "target": ecmHost,
       "secure": false,
@@ -21,8 +21,8 @@ module.exports = {
         }
       }
     },
-    <% } %>
-    <% if(template == 'aps' || template == 'acs-aps') { %>
+    <% } -%>
+    <% if(template == 'aps' || template == 'acs-aps') { -%>
     "/activiti-app": {
       "target": bpmHost,
       "secure": false,
@@ -32,15 +32,15 @@ module.exports = {
           request.setHeader("origin", bpmHost);
       }
     },
-    <% } %>
-    <% if(authType == 'OAUTH') { %>
+    <% } -%>
+    <% if(authType == 'OAUTH') { -%>
     '/auth': {
       "target": <% if(template == 'acs' || template == 'acs-aps' || template == 'acs-apa') { %>ecmHost<% } else { %>bpmHost<% } %>,
       "secure": false,
       "changeOrigin": true,
     },
-    <% } %>
-    <% if(template == 'apa' || template == 'acs-apa' || template == 'automate') { %>
+    <% } -%>
+    <% if(template == 'apa' || template == 'acs-apa' || template == 'automate') { -%>
     "/auth/admin/realms/myrealm": {
         "target": bpmHost,
         "secure": false,
@@ -65,12 +65,12 @@ module.exports = {
         "changeOrigin": true,
         "logLevel": "debug"
     },
-    <% } %>
-    <% if(template == 'automate') { %>
+    <% } -%>
+    <% if(template == 'automate') { -%>
     "/api": {
       target: ecmHost,
       logLevel: "debug",
       secure: false
     }
-    <% } %>
+    <% } -%>
 };

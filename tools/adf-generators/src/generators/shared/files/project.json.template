@@ -43,20 +43,20 @@
             "input": "node_modules/@alfresco/adf-content-services/bundles/assets",
             "output": "/assets"
           },
-          <% if(template == 'aps' || template == 'acs-aps') { %>
+          <% if(template == 'aps' || template == 'acs-aps') { -%>
           {
             "glob": "**/*",
             "input": "node_modules/@alfresco/adf-process-services/bundles/assets",
             "output": "/assets"
           },
-          <% } %>
-          <% if(template == 'apa' || template == 'acs-apa' || template == 'automate') { %>
+          <% } -%>
+          <% if(template == 'apa' || template == 'acs-apa' || template == 'automate') { -%>
           {
             "glob": "**/*",
             "input": "node_modules/@alfresco/adf-process-services-cloud/bundles/assets",
             "output": "/assets"
           },
-          <% } %>
+          <% } -%>
           {
             "glob": "pdf.worker.min.mjs",
             "input": "node_modules/pdfjs-dist/build",
