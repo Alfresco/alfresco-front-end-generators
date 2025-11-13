@@ -2,20 +2,24 @@ import { Routes } from '@angular/router';
 import { <% if(template == 'aps' || template == 'acs-aps' || template == 'apa' || template == 'acs-apa' || template == 'automate') { %>AuthGuardBpm, <% } %>AuthGuardEcm } from '@alfresco/adf-core';
 import { HomeComponent } from './home/home.component';
 import { AppLoginComponent } from './login/login.component';
-<% if(template == 'acs' || template == 'acs-aps') { %>import { DocumentsComponent } from './documents/documents.component';<% } %>
+<% if(template == 'acs' || template == 'acs-aps') { -%>
+import { DocumentsComponent } from './documents/documents.component';
+<% } -%>
 import { AppLayoutComponent } from './app-layout/app-layout.component';
 import { FileViewComponent } from './file-view/file-view.component';
-<% if(template == 'aps' || template == 'acs-aps') { %>import { BlobViewComponent } from './file-view/blob-view.component';
+<% if(template == 'aps' || template == 'acs-aps') { -%>
+import { BlobViewComponent } from './file-view/blob-view.component';
 import { AppsComponent } from './apps/apps.component';
 import { TasksComponent } from './tasks/tasks.component';
 import { AppTaskDetailsComponent } from './task-details/task-details.component';
 import { StartProcessComponent } from './start-process/start-process.component';
-<% } %>
-<% if(template == 'apa' || template == 'acs-apa' || template == 'automate') { %>import { AppsCloudComponent } from './apps-cloud/apps-cloud.component';
+<% } -%>
+<% if(template == 'apa' || template == 'acs-apa' || template == 'automate') { -%>
+import { AppsCloudComponent } from './apps-cloud/apps-cloud.component';
 import { TasksCloudComponent } from './tasks-cloud/tasks-cloud.component';
 import { AppTaskDetailsCloudComponent } from './task-details-cloud/task-details-cloud.component';
 import { StartProcessComponent } from './start-process-cloud/start-process-cloud.component';
-<% } %>
+<% } -%>
 
 export const APP_ROUTES: Routes = [
   {
@@ -24,7 +28,7 @@ export const APP_ROUTES: Routes = [
     canActivate: [AuthGuardEcm],
     outlet: 'overlay',
   },
-  <% if(template == 'aps' || template == 'acs-aps') { %>
+  <% if(template == 'aps' || template == 'acs-aps') { -%>
   {
     path: 'preview/blob',
     component: BlobViewComponent,
@@ -32,7 +36,7 @@ export const APP_ROUTES: Routes = [
     outlet: 'overlay',
     pathMatch: 'full'
   },
-  <% } %>
+  <% } -%>
   {
     path: '',
     component: AppLayoutComponent,
@@ -45,14 +49,14 @@ export const APP_ROUTES: Routes = [
         path: 'home',
         component: HomeComponent,
       },
-      <% if(template == 'acs' || template == 'acs-aps' || template == 'acs-apa') { %>
+      <% if(template == 'acs' || template == 'acs-aps' || template == 'acs-apa') { -%>
       {
         path: 'documents',
         component: DocumentsComponent,
         canActivate: [AuthGuardEcm],
       },
-      <% } %>
-      <% if(template == 'aps' || template == 'acs-aps') { %>
+      <% } -%>
+      <% if(template == 'aps' || template == 'acs-aps') { -%>
       {
         path: 'apps',
         component: AppsComponent,
@@ -73,8 +77,8 @@ export const APP_ROUTES: Routes = [
         component: StartProcessComponent,
         canActivate: [ AuthGuardBpm ]
       }
-      <% } %>
-      <% if(template == 'apa' || template == 'acs-apa' || template == 'automate') { %>
+      <% } -%>
+      <% if(template == 'apa' || template == 'acs-apa' || template == 'automate') { -%>
       {
         path: 'apps',
         component: AppsCloudComponent,
@@ -95,7 +99,7 @@ export const APP_ROUTES: Routes = [
         component: StartProcessComponent,
         canActivate: [AuthGuardBpm]
       }
-      <% } %>
+      <% } -%>
     ],
   },
   {

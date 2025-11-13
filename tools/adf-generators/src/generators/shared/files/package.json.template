@@ -14,13 +14,13 @@
     "@alfresco/adf-content-services": "8.0.0",
     "@alfresco/adf-core": "8.0.0",
     "@alfresco/adf-extensions": "8.0.0",
-    <% if(template == 'aps' || template == 'acs-aps') { %>
+    <% if(template == 'aps' || template == 'acs-aps') { -%>
     "@alfresco/adf-process-services": "8.0.0",
-    <% } %>
-    <% if(template == 'apa' || template == 'acs-apa' || template == 'automate') { %>
+    <% } -%>
+    <% if(template == 'apa' || template == 'acs-apa' || template == 'automate') { -%>
     "@alfresco/adf-process-services-cloud": "8.0.0",
     "graphql-ws": "^6.0.5",
-    <% } %>
+    <% } -%>
     "@alfresco/eslint-plugin-eslint-angular": "8.0.0",
     "@alfresco/js-api": "9.0.0",
     "@angular/animations": "19.2.6",

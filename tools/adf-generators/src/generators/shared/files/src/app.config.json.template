@@ -1,15 +1,15 @@
 {
   "$schema": "../node_modules/@alfresco/adf-core/app.config.schema.json",
-  <% if(provider == 'ECM' || provider == 'ALL') { %>
+  <% if(provider == 'ECM' || provider == 'ALL') { -%>
   "ecmHost": "{protocol}//{hostname}{:port}",
-  <% } %>
-  <% if(provider == 'BPM' || provider == 'ALL') { %>
+  <% } -%>
+  <% if(provider == 'BPM' || provider == 'ALL') { -%>
   "bpmHost": "{protocol}//{hostname}{:port}",
   "disableCSRF": false,
-  <% } %>
+  <% } -%>
   "providers": "<%= provider %>",
   "authType": "<%= authType %>",
-  <% if(authType == 'OAUTH' && template != 'automate') { %>
+  <% if(authType == 'OAUTH' && template != 'automate') { -%>
   "identityHost": "{protocol}//{hostname}{:port}/auth/realms/alfresco",
   "loginRoute": "login",
   "oauth2": {
@@ -29,8 +29,8 @@
     "skipIssuerCheck": true,
     "strictDiscoveryDocumentValidation": false
   },
-  <% } %>
-  <% if(authType == 'OAUTH' && template == 'automate') { %>
+  <% } -%>
+  <% if(authType == 'OAUTH' && template == 'automate') { -%>
   "serverTimeUrl": "{protocol}//{hostname}{:port}/identity-adapter-service/v1/server/time",
   "oauth2": {
     "host": "APP_CONFIG_OAUTH2_HOST",
@@ -48,7 +48,7 @@
     "redirectUriLogout": "/",
     "clockSkewInSec": 120
   },
-  <% } %>
+  <% } -%>
   "application": {
     "name": "<%= projectName %>"
   },
@@ -59,7 +59,7 @@
     }
   ],
   "logLevel": "trace",
-  <% if(template == 'apa' || template == 'acs-apa' || template == 'automate') { %>
+  <% if(template == 'apa' || template == 'acs-apa' || template == 'automate') { -%>
   "adf-cloud-task-list": {
     "presets": {
       "default": [
@@ -209,5 +209,5 @@
     }
   },
   "alfresco-deployed-apps": <% if(template == 'automate') { %>"APP_CONFIG_APPS_DEPLOYED"<% } else { %>[]<% } %>
-  <% } %>
+  <% } -%>
 }
