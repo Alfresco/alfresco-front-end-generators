@@ -6,11 +6,17 @@ on:
     branches:
       - master
 
+permissions:
+  id-token: write  # Required for OIDC
+  contents: read
+
 jobs:
   publish-npm:
     name: "Publish to NPM registry"
     runs-on: ubuntu-latest
     permissions:
+      id-token: write  # Required for OIDC
+      contents: read
       packages: write
     steps:
       - name: Checkout
@@ -18,11 +24,12 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         name: setup NPM registry
         with:
           node-version-file: '.nvmrc'
           registry-url: 'https://registry.npmjs.org'
+          scope: '@alfresco'
 
       - name: install dependencies
         run: |
@@ -35,8 +42,6 @@ jobs:
       - name: publish to NPM
         run: |
           npm run release
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_REGISTRY_TOKEN }}
 
   publish-git-tag:
     name: "Publish Git Tag"
